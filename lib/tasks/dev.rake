@@ -28,16 +28,14 @@ task sample_data: :environment do
   12.times do 
     name = Faker::Name.first_name
     
-    u = User.create(
+    User.create(
       email: "#{name}@example.com",
       password: "password",
       username: name,
       private: [true, false].sample,
     )
-    users << u
-    p u.errors.full_messages
   end
-
+  users = User.all
   # Create follow requests
   users.each do
     FollowRequest.create(
