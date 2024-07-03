@@ -30,6 +30,9 @@
         <% } %>
       </ul>
       <div class="card-body">
+        <%= render "comments/form", comment: Comment.new(photo_id: photo.id) %>
+      </div>
+      <div class="card-body">
         <%= link_to 'Card link', "/", class: "card-link" %>
         <%= link_to 'Card link', "/", class: "card-link" %>
       </div>
