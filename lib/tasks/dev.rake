@@ -50,7 +50,7 @@ task sample_data: :environment do
     Photo.create(
       image: "https://picsum.photos/400",
       owner: user,
-      caption: "Oh we IN HERE IN HERE",
+      caption: Faker::Games::StreetFighter.quote,
     ).tap { |p| p.errors.full_messages }
   end
 
