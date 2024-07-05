@@ -6,19 +6,19 @@
 
     <ul class="nav nav-pills nav-justified">
       <li class="nav-item">
-        <%= link_to 'Posts', user_path(@user.username), class: "nav-link" %>
+        <%= link_to "Posts", user_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-          <%= link_to 'Liked photos', liked_path(@user.username), class: "nav-link" %>
+        <%= link_to "Liked photos", liked_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Feed</a>
+        <%= link_to 'Feed', feed_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Followers</a>
+        <%= link_to 'Followers', followers_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Following</a>
+        <%= link_to 'Following', following_path(@user.username), class: "nav-link" %>
       </li>
     </ul>
   </div>
@@ -26,38 +26,6 @@
 
 <ul>
 <% @user.own_photos.each do |photo| %>
-<div class="row mb-4">
-  <div class="col-md-6 offset-md-3">
-    <div class="card">
-      <%= image_tag photo.image, class: "card-img-top" %>
-      <div class="card-body">
-        <h5 class="card-title"><%= photo.owner.username %></h5>
-        <p class="card-text"><%= photo.caption %></p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <% photo.comments.each { |comment| %>
-          <li class="list-group-item">
-            <div class="d-flex">
-              <div class="flex-shrink-0">
-                <img src="" alt="">
-              </div>
-            </div>
-            <div class="flex-grow-1 ms-3">
-              <h5 class="mt-0"><%= comment.author.username %></h5>
-              <p><%= comment.body %></p>
-            </div>
-          </li>
-        <% } %>
-      </ul>
-      <div class="card-body">
-        <%= render "comments/form", comment: Comment.new(photo_id: photo.id) %>
-      </div>
-      <div class="card-body">
-        <%= link_to 'Card link', "/", class: "card-link" %>
-        <%= link_to 'Card link', "/", class: "card-link" %>
-      </div>
-    </div>
-  </div>
-</div>
+  <%= render "photos/photo", photo: photo %>
 <% end %>
 </ul>

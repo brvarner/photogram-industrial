@@ -24,6 +24,8 @@
   </div>
 </div>
 
-<% @user.liked_photos.each do |photo| %>
-  <%= render "photos/photo", photo: photo %>
+<ul class="list-group">
+<% @user.followers.each do |follower| %>
+  <li class="list-group-item"><%= link_to "#{follower.username}", "/#{follower.username}" %></li>
 <% end %>
+</ul>
